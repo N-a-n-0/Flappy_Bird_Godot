@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce4w406yb6w5e"]
+
+[ext_resource type="Script" path="res://Scripts/Bird.cs" id="1_solgj"]
+[ext_resource type="Texture2D" uid="uid://ddw5mm0au2210" path="res://Sprites/yellowbird-midflap.png" id="2_pt3a6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jnjwo"]
+radius = 11.0
+
+[node name="Bird" type="Area2D"]
+script = ExtResource("1_solgj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pt3a6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jnjwo")
