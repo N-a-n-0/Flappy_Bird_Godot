@@ -36,10 +36,12 @@ public partial class Main : Node2D
 
 		 
 		var birdPacked = (PackedScene)GD.Load("res://Scenes/Bird.tscn");  
-		var birdInstance = birdPacked.Instantiate<Area2D>();
+		var birdInstance = birdPacked.Instantiate<Bird>();
 		world.AddChild(birdInstance);
 		birdInstance.Position = BirdStartPosition;
+		
 		bird = birdInstance;
+
 
 		 
 		spawnTimer.WaitTime = SpawnInterval;
