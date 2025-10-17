@@ -6,12 +6,14 @@ public partial class pipe_pair : Node2D
 	[Export] public float Speed = 160f;    
 	[Export] public float OffscreenX = -200f; 
 	private Area2D _scoreArea;
+	
+	 private AudioStreamPlayer2D scoreSound;
 
 	public override void _Ready()
 	{
+		scoreSound = GetNode<AudioStreamPlayer2D>("ScoreSound");
+		
 		_scoreArea = GetNode<Area2D>("ScoreArea");
-
-		 
 		_scoreArea.AreaEntered += OnScoreAreaAreaEntered;
 	}
 
@@ -30,6 +32,8 @@ public partial class pipe_pair : Node2D
 		// Check if the entered area is the Bird
 		if (area.Name == "Bird")
 		{
+			scoreSound.Play();
+			
 			GD.Print("Bird entered score area! Score should increase now");
 
 			// Call Main.AddScore

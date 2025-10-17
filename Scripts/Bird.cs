@@ -10,12 +10,15 @@ public partial class Bird : Area2D
 	private Vector2 velocity = Vector2.Zero;
 	private bool isAlive = true;
 
+ private AudioStreamPlayer2D jumpSound;
+ private AudioStreamPlayer2D dieSound;
 	 
 	private Node? gameManager;
 
 	public override void _Ready()
 	{
-		 
+			jumpSound = GetNode<AudioStreamPlayer2D>("JumpSound");
+			dieSound = GetNode<AudioStreamPlayer2D>("DieSound");
 		gameManager = GetTree().Root.GetNodeOrNull("Main");
 		
 		 
@@ -33,6 +36,7 @@ public partial class Bird : Area2D
 		{
 			 
 			velocity.Y = -FlapStrength;
+			  jumpSound.Play();
 		}
 
 	 
@@ -55,6 +59,7 @@ public partial class Bird : Area2D
 
 		isAlive = false;
 
+		dieSound.Play();
 		 
 		if (gameManager != null && gameManager.HasMethod("OnPlayerDied"))
 		{
